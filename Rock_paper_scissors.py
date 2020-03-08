@@ -12,11 +12,8 @@ while True:
     height+=vel
     canvas.update()
     canvas.after(1)
-<<<<<<< HEAD
     canvas.delete(left_fist)
-=======
     canvas.delete('all')
->>>>>>> 6ebfc2e8945924a59858453d10f8a62e4a76acb5
     if height==200:
         vel*=-1
     elif height==50:
