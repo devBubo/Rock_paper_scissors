@@ -9,6 +9,7 @@ canvas.pack()
 width=800
 winheight=600
 canvas.config(width=width,height=winheight)
+#import images
 left_hand=PhotoImage(file='left_fist.png')
 right_hand=PhotoImage(file='right_fist.png')
 rock=PhotoImage(file='rock.png')
@@ -27,7 +28,7 @@ playerchoice=500
 coordinate_x=5000
 coordinate_y=5000
 
-
+#clicks coordinates for functions
 def coordinates(eventorigin):
     global coordinate_x
     global coordinate_y
@@ -37,9 +38,11 @@ canvas.bind('<Button 1>',coordinates)
 while True:
     canvas.create_text(width-100, 50, fill='black', text='You', font=("Purisa", 30))
     canvas.create_text(100, 50, fill='black', text='Robot', font=("Purisa", 30))
+    #choices button image
     canvas.create_image(width/2, winheight-100, anchor=NW, image=paper_choice)
     canvas.create_image(100, winheight - 100, anchor=NW, image=rock_choice)
     canvas.create_image(width-150, winheight - 100, anchor=NW, image=scissors_choice)
+    #Possibilities of robot and player choices
     if countdown>0:
         left_fist=canvas.create_image(0, height, anchor=NW, image=left_hand)
         right_fist=canvas.create_image(width-348,height,anchor=NW,image=right_hand)
@@ -95,17 +98,18 @@ while True:
         elif playerchoice==500:
             canvas.create_image(0, 100, anchor=NW, image=scissors)
             canvas.create_text(400, 100, fill='black', text="You didn't choose", font=("Purisa", 30))
-
-    if coordinate_x>100 and coordinate_x<200 and coordinate_y>height-100:
+    #Programmed buttons
+    if coordinate_x>100 and coordinate_x<200 and coordinate_y>height-100 and countdown>0:
         playerchoice=0
-    elif coordinate_x>width/2 and coordinate_x<width/2+100 and coordinate_y>height-100:
+    elif coordinate_x>width/2 and coordinate_x<width/2+100 and coordinate_y>height-100 and countdown>0:
         playerchoice=1
-    elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100:
+    elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100 and countdown>0:
         playerchoice=2
     canvas.update()
     canvas.after(1)
     x+=1
     canvas.delete('all')
+    #changes directions of fistes
     if height==200:
         vel*=-1
     elif height==50:
