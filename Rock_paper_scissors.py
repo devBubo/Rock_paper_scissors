@@ -18,6 +18,7 @@ scissors=PhotoImage(file='scissors.png')
 rock_choice=PhotoImage(file='rock - choice.png')
 paper_choice=PhotoImage(file='paper - choice.png')
 scissors_choice=PhotoImage(file='scissors - choice.png')
+restart=PhotoImage(file='restart.png')
 
 height=100
 vel=1
@@ -42,6 +43,7 @@ while True:
     canvas.create_image(width/2, winheight-100, anchor=NW, image=paper_choice)
     canvas.create_image(100, winheight - 100, anchor=NW, image=rock_choice)
     canvas.create_image(width-150, winheight - 100, anchor=NW, image=scissors_choice)
+    canvas.create_image(width/2-150, winheight/2,anchor=NW,image=restart)
     #Possibilities of robot and player choices
     if countdown>0:
         left_fist=canvas.create_image(0, height, anchor=NW, image=left_hand)
@@ -105,6 +107,10 @@ while True:
         playerchoice=1
     elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100 and countdown>0:
         playerchoice=2
+    elif coordinate_x>width/2-150 and coordinate_x<width/2+150 and coordinate_y>winheight/2 and coordinate_y<winheight/2+100:
+        countdown=3
+        coordinate_x=5000
+        coordinate_y=5000
     canvas.update()
     canvas.after(1)
     x+=1
