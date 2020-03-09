@@ -4,6 +4,7 @@ import time
 start=time.time()
 root = Tk()
 root.title('Rock Paper Scissors')
+root.iconbitmap("left_fist.ico")
 canvas=Canvas()
 canvas.pack()
 width=800
