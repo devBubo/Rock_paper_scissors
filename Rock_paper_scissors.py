@@ -23,7 +23,7 @@ vel=1
 x=0
 countdown=3
 rand=randint(0,2)
-playerchoice=2
+playerchoice=500
 coordinate_x=5000
 coordinate_y=5000
 
@@ -60,6 +60,9 @@ while True:
             canvas.create_image(width-200,100,anchor=NW, image=scissors)
             canvas.create_image(0,100,anchor=NW, image=rock)
             canvas.create_text(400, 100, fill='black', text='You lost', font=("Purisa", 30))
+        elif playerchoice==500:
+            canvas.create_image(0, 100, anchor=NW, image=rock)
+            canvas.create_text(400, 100, fill='black', text="You didn't choose", font=("Purisa", 30))
     elif countdown<=0 and rand==1:
         if playerchoice==0:
             canvas.create_image(width-200,100,anchor=NW, image=rock)
@@ -73,6 +76,9 @@ while True:
             canvas.create_image(width-200,100,anchor=NW, image=scissors)
             canvas.create_image(0,100,anchor=NW, image=paper)
             canvas.create_text(400, 100, fill='black', text='You won', font=("Purisa", 30))
+        elif playerchoice==500:
+            canvas.create_image(0, 100, anchor=NW, image=paper)
+            canvas.create_text(400, 100, fill='black', text="You didn't choose", font=("Purisa", 30))
     elif countdown<=0 and rand==2:
         if playerchoice==0:
             canvas.create_image(width-200,100,anchor=NW, image=rock)
@@ -86,9 +92,16 @@ while True:
             canvas.create_image(width-200,100,anchor=NW, image=scissors)
             canvas.create_image(0,100,anchor=NW, image=scissors)
             canvas.create_text(400, 100, fill='black', text='You tied', font=("Purisa", 30))
-    if coordinate_x>0 and coordinate_y>height-200:
-        playerchoice=0
+        elif playerchoice==500:
+            canvas.create_image(0, 100, anchor=NW, image=scissors)
+            canvas.create_text(400, 100, fill='black', text="You didn't choose", font=("Purisa", 30))
 
+    if coordinate_x>100 and coordinate_x<200 and coordinate_y>height-100:
+        playerchoice=0
+    elif coordinate_x>width/2 and coordinate_x<width/2+100 and coordinate_y>height-100:
+        playerchoice=1
+    elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100:
+        playerchoice=2
     canvas.update()
     canvas.after(1)
     x+=1
