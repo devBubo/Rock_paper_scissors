@@ -112,6 +112,7 @@ while True:
         countdown=3
         coordinate_x=5000
         coordinate_y=5000
+        playerchoice=500
     canvas.update()
     canvas.after(1)
     x+=1
