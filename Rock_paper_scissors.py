@@ -44,7 +44,8 @@ while True:
     canvas.create_image(width/2, winheight-100, anchor=NW, image=paper_choice)
     canvas.create_image(100, winheight - 100, anchor=NW, image=rock_choice)
     canvas.create_image(width-150, winheight - 100, anchor=NW, image=scissors_choice)
-    canvas.create_image(width/2-150, winheight/2,anchor=NW,image=restart)
+    if countdown<=0:
+        canvas.create_image(width/2-150, winheight/2,anchor=NW,image=restart)
     #Possibilities of robot and player choices
     if countdown>0:
         left_fist=canvas.create_image(0, height, anchor=NW, image=left_hand)
@@ -113,6 +114,7 @@ while True:
         coordinate_x=5000
         coordinate_y=5000
         playerchoice=500
+        height = 100
     canvas.update()
     canvas.after(1)
     x+=1
