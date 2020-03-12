@@ -109,7 +109,7 @@ while True:
         playerchoice=1
     elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100 and countdown>0:
         playerchoice=2
-    elif coordinate_x>width/2-150 and coordinate_x<width/2+150 and coordinate_y>winheight/2 and coordinate_y<winheight/2+100:
+    elif coordinate_x>width/2-150 and coordinate_x<width/2+150 and coordinate_y>winheight/2 and coordinate_y<winheight/2+100 and countdown<=0:
         countdown=3
         coordinate_x=5000
         coordinate_y=5000
