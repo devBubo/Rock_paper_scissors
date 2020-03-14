@@ -115,6 +115,9 @@ while True:
         coordinate_y=5000
         playerchoice=500
         height = 100
+    elif coordinate_x > width / 2 - 150 and coordinate_x < width / 2 + 150 and coordinate_y > winheight / 2 and coordinate_y < winheight / 2 + 100 and countdown > 0:
+        coordinate_x=5000
+        coordinate_y=5000
     canvas.update()
     canvas.after(1)
     x+=1
