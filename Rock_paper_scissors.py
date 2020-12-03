@@ -25,11 +25,10 @@ height=100
 vel=1
 x=0
 countdown=3
-rand=randint(0,2)
 playerchoice=500
 coordinate_x=5000
 coordinate_y=5000
-
+robot_chose = False
 #clicks coordinates for functions
 def coordinates(eventorigin):
     global coordinate_x
@@ -38,6 +37,10 @@ def coordinates(eventorigin):
     coordinate_y=eventorigin.y
 canvas.bind('<Button 1>',coordinates)
 while True:
+    #resets bot's choices
+    if not(robot_chose):
+        rand=randint(0,2)
+        robot_chose = True
     canvas.create_text(width-100, 50, fill='black', text='You', font=("Purisa", 30))
     canvas.create_text(100, 50, fill='black', text='Robot', font=("Purisa", 30))
     #choices button image
@@ -103,18 +106,23 @@ while True:
             canvas.create_image(0, 100, anchor=NW, image=scissors)
             canvas.create_text(400, 100, fill='black', text="You didn't choose", font=("Purisa", 30))
     #Programmed buttons
+    #player chose rock
     if coordinate_x>100 and coordinate_x<200 and coordinate_y>height-100 and countdown>0:
         playerchoice=0
+    #player chose paper
     elif coordinate_x>width/2 and coordinate_x<width/2+100 and coordinate_y>height-100 and countdown>0:
         playerchoice=1
+    #player chose scissors
     elif coordinate_x>width-150 and coordinate_x<width-50 and coordinate_y>height-100 and countdown>0:
         playerchoice=2
+    #player chose to restart
     elif coordinate_x>width/2-150 and coordinate_x<width/2+150 and coordinate_y>winheight/2 and coordinate_y<winheight/2+100 and countdown<=0:
         countdown=3
         coordinate_x=5000
         coordinate_y=5000
         playerchoice=500
         height = 100
+        robot_chose = False
     elif coordinate_x > width / 2 - 150 and coordinate_x < width / 2 + 150 and coordinate_y > winheight / 2 and coordinate_y < winheight / 2 + 100 and countdown > 0:
         coordinate_x=5000
         coordinate_y=5000
@@ -123,7 +131,5 @@ while True:
     x+=1
     canvas.delete('all')
     #changes directions of fistes
-    if height==200:
-        vel*=-1
-    elif height==50:
+    if height==200 or height==50:
         vel*=-1
